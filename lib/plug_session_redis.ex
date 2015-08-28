@@ -1,0 +1,2 @@
+defmodule PlugSessionRedis do
+end
