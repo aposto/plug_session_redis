@@ -3,8 +3,13 @@ PlugSessionRedis
 
 Poolboy + Redis for Plug.Session
 
-## Usage
+## Usage 
 ```elixir
+# mix.exs
+def application do
+  [applications: [..., :plug_session_redis]]
+end
+
 defp deps do
   [{:plug_session_redis, "~> 0.1" }]
 end
@@ -12,8 +17,8 @@ end
 
 ## config.exs
 ```elixir
-config :your_app, PlugSessionRedis.Redis.Pool,
-  name: :session_pool,
+config :plug_session_redis, :config,
+  name: :redis_sessions,
   pool: [size: 2, max_overflow: 5],
   redis: [host: '127.0.0.1', port: 6379]
 ```
@@ -21,7 +26,7 @@ config :your_app, PlugSessionRedis.Redis.Pool,
 ## EndPoint
 ```elixir
 plug Plug.Session,
-  store: :redis,
+  store: PlugSessionRedis.Store,
   key: "_my_app_key", # use a proper value 
   table: :redis_sessions, # <-- this on is hard coded into the plug
   signing_salt: "123456",   # use a proper value

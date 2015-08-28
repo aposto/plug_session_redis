@@ -14,7 +14,8 @@ defmodule PlugSessionRedis.Mixfile do
   #
   # Type `mix help compile.app` for more information
   def application do
-    [applications: [:logger]]
+    [mod: {PlugSessionRedis, []},
+      applications: [:logger]]
   end
 
   # Dependencies can be Hex packages:
@@ -27,7 +28,8 @@ defmodule PlugSessionRedis.Mixfile do
   #
   # Type `mix help deps` for more examples and options
   defp deps do
-    [ {:plug, "~> 1.0", optional: true},
+    [ 
+    # {:plug, "~> 1.0", optional: true},
     {:poolboy, "~> 1.5"},
     {:redo, "~> 2.0"}
     ]

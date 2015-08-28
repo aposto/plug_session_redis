@@ -1,29 +1,19 @@
 
 
-defmodule PlugSessionRedis.Redis.Store do
+defmodule PlugSessionRedis.Store do
   @moduledoc """
 
   ## Options
-    * `:table` - ETS table name (required)
-  For more information on ETS tables, visit the Erlang documentation at
-  http://www.erlang.org/doc/man/ets.html.
-  ## Storage
-  The data is stored in ETS in the following format:
-      {sid :: String.t, data :: map, timestamp :: :erlang.timestamp}
-  The timestamp is updated whenever there is a read or write to the
-  table and it may be used to detect if a session is still active.
+   
   ## Examples
-      # Create an ETS table when the application starts
-      :ets.new(:session, [:named_table, :public, read_concurrency: true])
-      # Use the session plug with the table name
-      plug Plug.Session, store: :ets, key: "sid", table: :session
+      
   """
 
   @behaviour Plug.Session.Store
-  @max_tries 100
-
+  
   def init(opts) do
-    {PlugSessionRedis.Redis.Pool.pool_name(), Keyword.get(opts, :ttl, :infinite)}
+
+    {Keyword.fetch!(opts, :table), Keyword.get(opts, :ttl, :infinite)}
   end
 
   def get(_conn, sid, {table, _}) do
@@ -49,8 +39,6 @@ defmodule PlugSessionRedis.Redis.Store do
   end
 
   def delete(_conn, sid, {table, _}) do
-    IO.puts("**** Redis Session Delete")
-   
     :poolboy.transaction(table, fn(client) ->
       :redo.cmd(client, ["DEL", sid])
     end)
@@ -77,7 +65,4 @@ defmodule PlugSessionRedis.Redis.Store do
     [ret, _] = :redo.cmd(client, [["SET", sid, bin], ["EXPIRE", sid, ttl]])
     ret
   end
-
- 
- 
 end
