@@ -11,7 +11,7 @@ def application do
 end
 
 defp deps do
-  [{:plug_session_redis, "~> 0.1" }]
+  [{:plug_session_redis, "~> 0.2" }]
 end
 ```
 
@@ -23,13 +23,13 @@ config :plug_session_redis, :config,
   redis: [host: '127.0.0.1', port: 6379]
 ```
 
-## EndPoint
+## Plug.Session
 ```elixir
 plug Plug.Session,
   store: PlugSessionRedis.Store,
-  key: "_my_app_key", # use a proper value 
-  table: :redis_sessions, # <-- this on is hard coded into the plug
-  signing_salt: "123456",   # use a proper value
-  encryption_salt: "654321", # use a proper value
+  key: "_my_app_key",       #
+  table: :redis_sessions,   #  
+  signing_salt: "123456",   #
+  encryption_salt: "654321",#
   ttl: 360                  # use redis EXPIRE secs
 ```
