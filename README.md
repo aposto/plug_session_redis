@@ -15,7 +15,7 @@ end
 config :your_app, PlugSessionRedis.Redis.Pool,
   name: :session_pool,
   pool: [size: 2, max_overflow: 5],
-  redis: [host: '58.121.156.234', port: 6379]
+  redis: [host: '127.0.0.1', port: 6379]
 ```
 
 ## EndPoint
