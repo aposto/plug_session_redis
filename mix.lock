@@ -1,3 +1,2 @@
-%{"plug": {:hex, :plug, "1.0.0"},
-  "poolboy": {:hex, :poolboy, "1.5.1"},
+%{"poolboy": {:hex, :poolboy, "1.5.1"},
   "redo": {:hex, :redo, "2.0.1"}}

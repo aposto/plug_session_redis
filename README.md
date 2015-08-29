@@ -1,7 +1,7 @@
 PlugSessionRedis
 ================
-
-Poolboy + Redis for Plug.Session
+The Redis Plug.Session adapter for the Phoenix framework.
+Poolboy + Redis.
 
 ## Usage 
 ```elixir
@@ -11,7 +11,7 @@ def application do
 end
 
 defp deps do
-  [{:plug_session_redis, "~> 0.2" }]
+  [{:plug_session_redis, "~> 0.1" }]
 end
 ```
 
@@ -23,7 +23,7 @@ config :plug_session_redis, :config,
   redis: [host: '127.0.0.1', port: 6379]
 ```
 
-## Plug.Session
+## endpoint.ex  
 ```elixir
 plug Plug.Session,
   store: PlugSessionRedis.Store,

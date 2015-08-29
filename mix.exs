@@ -3,7 +3,7 @@ defmodule PlugSessionRedis.Mixfile do
 
   def project do
     [app: :plug_session_redis,
-     version: "0.0.2",
+     version: "0.1.0",
      elixir: "~> 1.0",
      description: description,
      package: package,
@@ -22,7 +22,7 @@ defmodule PlugSessionRedis.Mixfile do
 
   defp description do
     """
-    Redis sessions store for Elixir plug.
+    The Redis Plug.Session adapter for the Phoenix framework.
     """
   end
 
