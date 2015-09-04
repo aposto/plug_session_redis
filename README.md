@@ -1,5 +1,7 @@
 PlugSessionRedis
 ================
+[![hex.pm version](https://img.shields.io/hexpm/v/plug_session_redis.svg)](https://hex.pm/packages/plug_session_redis)
+
 The Redis Plug.Session adapter for the Phoenix framework.
 Poolboy + Redis.
 
