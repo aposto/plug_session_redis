@@ -5,6 +5,8 @@ PlugSessionRedis
 The Redis Plug.Session adapter for the Phoenix framework.
 Poolboy + Redis.
 
+## 1
+
 ## Usage
 ```elixir
 # mix.exs
