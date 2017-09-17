@@ -28,7 +28,7 @@ defmodule PlugSessionRedis.Mixfile do
 
   defp deps do
     [
-      {:plug, "~> 1.0", optional: true},
+      {:plug, "~> 1.4", optional: true},
       {:poolboy, "~> 1.5"},
       {:redo, "~> 2.0"}
     ]
